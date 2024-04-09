@@ -52,7 +52,28 @@
     {
       "group": "Property",
       "pages": [
-        "api-reference/Property/uprn_get"
+        "api-reference/Property/uprn_get",
+        "api-reference/Property/uprn_address"
+      ]
+    },
+    {
+      "group": "Funding",
+      "pages": [
+        "api-reference/Funding/uprn_get",
+        "api-reference/Funding/uprn_address"
+      ]
+    },
+    {
+      "group": "Renewables",
+      "pages": [
+        "api-reference/Renewables/uprn_get",
+        "api-reference/Renewables/uprn_address"
+      ]
+    },
+    {
+      "group": "Properties",
+      "pages": [
+        "api-reference/Properties/properties_post"
       ]
     }
   ]
