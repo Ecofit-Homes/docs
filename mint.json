@@ -5,7 +5,8 @@
     "dark": "/logo/logo.png",
     "light": "/logo/logo.png"
   },
-  "favicon": "/favicon.svg",
+  "openapi": ["/Ecofit API-dev-swagger.json"],
+  "favicon": "/favicon.ico",
   "colors": {
     "primary": "#dd5942",
     "light": "#07C983",
@@ -31,14 +32,15 @@
     {
       "name": "Documentation",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://tcmhsconsulting.mintlify.app/introduction"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
-        "introduction"
+        "introduction",
+        "pricing"
       ]
     },
     {

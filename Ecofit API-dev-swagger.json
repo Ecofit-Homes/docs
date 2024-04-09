@@ -1,0 +1,216 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "\n### The best energy efficiency data in real time ☀️\n\n# Introduction 🌍\n\nWelcome to the **Ecofit API** - we offer access to comprehensive, real-time data on energy efficiency and retrofit solutions. Our API is meticulously designed to provide developers, researchers, and businesses with seamless access to a wealth of information related to energy conservation, property attributes, and funding opportunities.\n\nWhether you're looking to optimize energy usage, explore retrofit options, or simply gather detailed property insights, the Ecofit API is your go-to resource. Dive into a world where data drives sustainability!\n\n# Authentication 🔐\n\nTo ensure the security and integrity of our data, Ecofit API uses OAuth2 tokens for authentication. This system guarantees that only registered and authorized users can access our valuable data sets.\n\nIf you're not yet registered and need access, please reach out to an administrator at support@ecofithomes.com. Our team will guide you through a simple user creation process, so you can start leveraging our API's capabilities in no time.\n\n# Features and Endpoints 🚀\n\nOur API offers a range of endpoints, each designed to cater to different aspects of energy efficiency and property analysis:\n\n- **Property Endpoints**: Search for one home with a UPRN or address, or a range of properties with our bulk filtering methods for bespoke data analysis.\n- **Funding Endpoints**: Find out what national funding schemes a property could qualify for.\n- **Renewables Endpoints**: Find out the real time costs of installing renewable technologies for a property, tailored to where the property is located, and the size of the install.\n\n# Getting Started 📘\n\nTo begin using the Ecofit API, first ensure that you have received your OAuth2 token after registering as a user. Then, head over to our comprehensive documentation, which provides detailed information on each endpoint, including request and response formats, parameters, and example use cases.\n\nHappy coding, and here's to a more energy-efficient future!\n\n",
+    "version" : "2024-04-05T15:44:19Z",
+    "title" : "Ecofit API",
+    "termsOfService" : "https://ecofithomes.com",
+    "contact" : {
+      "name" : "Harry Smith - CTO",
+      "email" : "support@ecofithomes.com"
+    },
+    "x-logo" : {
+      "url" : "https://d1uyj448enz6p6.cloudfront.net/logo-padded2.png",
+      "altText" : "Ecofit Logo"
+    }
+  },
+  "host" : "okxcwsjzyh.execute-api.eu-west-2.amazonaws.com",
+  "basePath" : "/dev",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    },
+    "/estimate_property" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "address",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "postcode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    },
+    "/funding/address" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "address",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "postcode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/funding/uprn" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "uprn",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/property/address" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "address",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "postcode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/property/uprn" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "uprn",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    },
+    "/renewables/address" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "address",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "postcode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/renewables/uprn" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "uprn",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "x-api-key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "Empty" : {
+      "type" : "object",
+      "title" : "Empty Schema"
+    }
+  }
+}
