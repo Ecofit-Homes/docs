@@ -5,7 +5,7 @@
     "dark": "/logo/logo.png",
     "light": "/logo/logo.png"
   },
-  "openapi": ["/openapi.json"],
+  "openapi": ["/openapi.yml"],
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#dd5942",

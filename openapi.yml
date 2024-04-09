@@ -1,0 +1,914 @@
+openapi: 3.0.1
+info:
+  title: Ecofit API
+  termsOfService: https://ecofithomes.com
+  contact:
+    name: Harry Smith - CTO
+    email: support@ecofithomes.com
+  version: 1.3.0
+  x-logo:
+    url: https://d1uyj448enz6p6.cloudfront.net/logo-padded2.png
+    altText: Ecofit Logo
+paths:
+  /funding/uprn:
+    get:
+      tags:
+        - Funding
+      summary: Eligible Funding for a Property by UPRN
+      description: Endpoint to get funding eligibility for a property. The endpoint takes a UPRN and returns a JSON object with funding eligibility for the property.       Optional query parameters can be used to specify which funding eligibility fields to return.
+      operationId: funding_eligibility_by_uprn_funding_uprn_get
+      parameters:
+        - name: uprn
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Uprn
+        - name: schemes
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: array
+                items:
+                  type: string
+              - type: string
+            title: Schemes
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingEligibility'
+        '404':
+          description: Property not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /funding/address:
+    get:
+      tags:
+        - Funding
+      summary: Eligible Funding for a Property by Address
+      description: Endpoint to get funding eligibility for a property. The endpoint takes a first line of address and postcode and returns a JSON object with funding eligibility for the property.       Optional query parameters can be used to specify which funding eligibility fields to return.
+      operationId: funding_eligibility_by_address_funding_address_get
+      parameters:
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Address
+        - name: postcode
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Postcode
+        - name: schemes
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: array
+                items:
+                  type: string
+              - type: string
+            title: Schemes
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingEligibility'
+        '404':
+          description: Property not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /property/uprn:
+    get:
+      tags:
+        - Property
+      summary: Energy Efficiency Information for a Property by UPRN
+      description: Endpoint to return energy efficiency information for a property.The endpoint takes a UPRN as a parameter.
+      operationId: get_property_by_uprn_property_uprn_get
+      parameters:
+        - name: uprn
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Uprn
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyBase'
+        '404':
+          description: Property not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '500':
+          description: Internal Server Error. Contact Admin.
+  /property/address:
+    get:
+      tags:
+        - Property
+      summary: Energy Efficiency Information for a Property by Address
+      description: 'Endpoint to return energy efficiency information for a property.The endpoint takes two parameters: address and postcode.'
+      operationId: get_property_by_address_property_address_get
+      parameters:
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Address
+        - name: postcode
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Postcode
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyBase'
+        '404':
+          description: Property not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '500':
+          description: Internal Server Error. Contact Admin.
+  /estimate_property:
+    get:
+      tags:
+        - Property
+      summary: Estimated Energy Efficiency Information for a Property
+      description: 'Endpoint to estimate what the EPC of a property may be.The endpoint takes two parameters: first line of address and postcode. Only properties with 5 nearby properties in the same postcode are estimated.'
+      operationId: estimate_property_estimate_property_get
+      parameters:
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Address
+        - name: postcode
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Postcode
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimatedPropertyBase'
+        '404':
+          description: Not enough data to estimate property
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '500':
+          description: Internal Server Error. Contact Admin.
+  /renewables/uprn:
+    get:
+      tags:
+        - Renewables
+      summary: Renewable Technology Information for a Property by UPRN
+      description: Endpoint to return Renewable technology costs for a property.The endpoint takes a UPRN as a parameter.
+      operationId: renewable_costs_by_uprn_renewables_uprn_get
+      parameters:
+        - name: uprn
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Uprn
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenewablePrice'
+        '404':
+          description: Property not found or no renewables data found for this property.
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '500':
+          description: Internal Server Error. Contact Admin.
+  /renewables/address:
+    get:
+      tags:
+        - Renewables
+      summary: Renewable Technology Information for a Property by Address
+      description: 'Endpoint to return Renewable technology costs for a property.The endpoint takes two parameters: first line of address and postcode.'
+      operationId: renewable_costs_by_address_renewables_address_get
+      parameters:
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Address
+        - name: postcode
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Postcode
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenewablePrice'
+        '404':
+          description: Property not found or no renewables data found for this property.
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '500':
+          description: Internal Server Error. Contact Admin.
+  /properties:
+    post:
+      tags:
+        - Property
+      summary: Energy Efficiency Information for a collection of properties
+      description: |-
+        Endpoint to return a list of properties based on the query parameters.
+            The limit here is set to 100 but can be controlled through the limit parameter.
+      operationId: get_properties_properties_post
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: integer
+              - type: string
+            default: 100
+            title: Limit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PropertyFilter'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PropertyBase'
+                title: Response Get Properties Properties Post
+        '400':
+          description: Invalid filter
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    EfficiencyComponent:
+      properties:
+        description:
+          type: string
+          title: Description
+        energy_eff:
+          anyOf:
+            - type: string
+            - type: string
+          title: Energy Eff
+        env_eff:
+          anyOf:
+            - type: string
+            - type: string
+          title: Env Eff
+      type: object
+      required:
+        - description
+      title: EfficiencyComponent
+      description: Efficiency Component Embedded Document
+    EstimatedPropertyBase:
+      properties:
+        address1:
+          type: string
+          title: Address1
+        postcode:
+          type: string
+          title: Postcode
+        local_authority:
+          anyOf:
+            - type: string
+          title: Local Authority
+        local_authority_id:
+          anyOf:
+            - type: string
+          title: Local Authority Id
+        region:
+          anyOf:
+            - type: string
+          title: Region
+        nation:
+          anyOf:
+            - type: string
+          title: Nation
+        posttown:
+          anyOf:
+            - type: string
+          title: Posttown
+        property_type:
+          anyOf:
+            - type: string
+          title: Property Type
+        built_form:
+          anyOf:
+            - type: string
+          title: Built Form
+        construction_age_band:
+          anyOf:
+            - type: string
+          title: Construction Age Band
+        total_floor_area:
+          anyOf:
+            - type: integer
+          title: Total Floor Area
+        number_habitable_rooms:
+          anyOf:
+            - type: integer
+          title: Number Habitable Rooms
+        number_heated_rooms:
+          anyOf:
+            - type: integer
+          title: Number Heated Rooms
+        number_open_fireplaces:
+          anyOf:
+            - type: integer
+          title: Number Open Fireplaces
+        mechanical_ventilation:
+          anyOf:
+            - type: string
+          title: Mechanical Ventilation
+        energy_tariff:
+          anyOf:
+            - type: string
+          title: Energy Tariff
+        mains_gas_flag:
+          anyOf:
+            - type: boolean
+          title: Mains Gas Flag
+        main_fuel:
+          anyOf:
+            - type: string
+          title: Main Fuel
+        environment_impact_current:
+          anyOf:
+            - type: integer
+          title: Environment Impact Current
+        environment_impact_potential:
+          anyOf:
+            - type: integer
+          title: Environment Impact Potential
+        co2_emissions_current:
+          anyOf:
+            - type: number
+          title: Co2 Emissions Current
+        co2_emissions_potential:
+          anyOf:
+            - type: number
+          title: Co2 Emissions Potential
+        co2_emiss_curr_per_floor_area:
+          anyOf:
+            - type: integer
+          title: Co2 Emiss Curr Per Floor Area
+      type: object
+      required:
+        - address1
+        - postcode
+      title: EstimatedPropertyBase
+      description: EstimatedPropertyBase Pydantic Model
+    FundingEligibility:
+      properties:
+        BUS:
+          anyOf:
+            - type: string
+          title: Bus
+        GBIS:
+          anyOf:
+            - type: string
+          title: Gbis
+        ECO4:
+          anyOf:
+            - type: string
+          title: Eco4
+        SHDF:
+          anyOf:
+            - type: string
+          title: Shdf
+        LAD3:
+          anyOf:
+            - type: string
+          title: Lad3
+        HUG2:
+          anyOf:
+            - type: string
+          title: Hug2
+        SEG:
+          anyOf:
+            - type: string
+          title: Seg
+        NEST:
+          anyOf:
+            - type: string
+          title: Nest
+        HES:
+          anyOf:
+            - type: string
+          title: Hes
+        WHS:
+          anyOf:
+            - type: string
+          title: Whs
+        PRSLL:
+          anyOf:
+            - type: string
+          title: Prsll
+      type: object
+      title: FundingEligibility
+      description: Pydantic model for the Funding Eligibility
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Improvement:
+      properties:
+        improvement_text:
+          anyOf:
+            - type: string
+          title: Improvement Text
+        typical_saving:
+          anyOf:
+            - type: integer
+          title: Typical Saving
+        cost:
+          anyOf:
+            - type: string
+          title: Cost
+        cost_from:
+          anyOf:
+            - type: integer
+          title: Cost From
+        cost_to:
+          anyOf:
+            - type: integer
+          title: Cost To
+      type: object
+      required:
+        - improvement_text
+        - cost
+      title: Improvement
+      description: Improvement Embedded Document
+    PropertyBase:
+      properties:
+        uprn:
+          anyOf:
+            - type: string
+          title: Uprn
+        address1:
+          type: string
+          title: Address1
+        address2:
+          anyOf:
+            - type: string
+          title: Address2
+        postcode:
+          type: string
+          title: Postcode
+        local_authority:
+          anyOf:
+            - type: string
+          title: Local Authority
+        local_authority_id:
+          anyOf:
+            - type: string
+          title: Local Authority Id
+        region:
+          anyOf:
+            - type: string
+          title: Region
+        nation:
+          anyOf:
+            - type: string
+          title: Nation
+        posttown:
+          anyOf:
+            - type: string
+          title: Posttown
+        property_type:
+          anyOf:
+            - type: string
+          title: Property Type
+        built_form:
+          anyOf:
+            - type: string
+          title: Built Form
+        epc_valid_from:
+          anyOf:
+            - type: string
+              format: date-time
+          title: Epc Valid From
+        construction_age_band:
+          anyOf:
+            - type: string
+          title: Construction Age Band
+        tenure:
+          anyOf:
+            - type: string
+          title: Tenure
+        total_floor_area:
+          anyOf:
+            - type: number
+          title: Total Floor Area
+        multi_glaze_proportion:
+          anyOf:
+            - type: integer
+          title: Multi Glaze Proportion
+        glazed_type:
+          anyOf:
+            - type: string
+          title: Glazed Type
+        glazed_area:
+          anyOf:
+            - type: string
+          title: Glazed Area
+        extension_count:
+          anyOf:
+            - type: integer
+          title: Extension Count
+        number_habitable_rooms:
+          anyOf:
+            - type: integer
+          title: Number Habitable Rooms
+        number_heated_rooms:
+          anyOf:
+            - type: integer
+          title: Number Heated Rooms
+        low_energy_lighting:
+          anyOf:
+            - type: integer
+          title: Low Energy Lighting
+        number_fixed_lighting_outlets:
+          anyOf:
+            - type: integer
+          title: Number Fixed Lighting Outlets
+        number_low_energy_fixed_lighting_outlets:
+          anyOf:
+            - type: integer
+          title: Number Low Energy Fixed Lighting Outlets
+        number_open_fireplaces:
+          anyOf:
+            - type: integer
+          title: Number Open Fireplaces
+        mechanical_ventilation:
+          anyOf:
+            - type: string
+          title: Mechanical Ventilation
+        current_energy_rating:
+          type: string
+          title: Current Energy Rating
+        potential_energy_rating:
+          type: string
+          title: Potential Energy Rating
+        current_energy_efficiency:
+          anyOf:
+            - type: integer
+          title: Current Energy Efficiency
+        potential_energy_efficiency:
+          anyOf:
+            - type: integer
+          title: Potential Energy Efficiency
+        energy_consumption_current:
+          anyOf:
+            - type: integer
+          title: Energy Consumption Current
+        energy_consumption_potential:
+          anyOf:
+            - type: integer
+          title: Energy Consumption Potential
+        energy_tariff:
+          anyOf:
+            - type: string
+          title: Energy Tariff
+        mains_gas_flag:
+          anyOf:
+            - type: boolean
+          title: Mains Gas Flag
+        main_fuel:
+          anyOf:
+            - type: string
+          title: Main Fuel
+        wind_turbine:
+          type: boolean
+          title: Wind Turbine
+        solar:
+          type: boolean
+          title: Solar
+        solar_thermal:
+          type: boolean
+          title: Solar Thermal
+        environment_impact_current:
+          anyOf:
+            - type: integer
+          title: Environment Impact Current
+        environment_impact_potential:
+          anyOf:
+            - type: integer
+          title: Environment Impact Potential
+        co2_emissions_current:
+          anyOf:
+            - type: number
+          title: Co2 Emissions Current
+        co2_emissions_potential:
+          anyOf:
+            - type: number
+          title: Co2 Emissions Potential
+        co2_emiss_curr_per_floor_area:
+          anyOf:
+            - type: number
+          title: Co2 Emiss Curr Per Floor Area
+        improvements:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/Improvement'
+              type: array
+          title: Improvements
+        hot_water:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Hot Water
+        floor:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Floor
+        windows:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Windows
+        walls:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Walls
+        roof:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Roof
+        mainheat:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Mainheat
+        secondary_heat:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Secondary Heat
+        mainheat_cont:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Mainheat Cont
+        lighting:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/EfficiencyComponent'
+              type: array
+          title: Lighting
+      type: object
+      required:
+        - address1
+        - postcode
+        - wind_turbine
+        - solar
+        - solar_thermal
+      title: PropertyBase
+      description: PropertyBase Pydantic Model
+    PropertyFilter:
+      properties:
+        region:
+          anyOf:
+            - type: string
+          title: Region
+          description: Region to filter on
+        nation:
+          anyOf:
+            - type: string
+          title: Nation
+          description: Nation to filter on
+        local_authority:
+          anyOf:
+            - type: string
+          title: Local Authority
+          description: Local Authority ID to filter on
+        current_energy_rating:
+          anyOf:
+            - items:
+                type: string
+              type: array
+          title: Current Energy Rating
+          description: List of current energy ratings to filter on. Can be none, 1 or many
+        mains_gas_flag:
+          anyOf:
+            - type: string
+          title: Mains Gas Flag
+          description: Y or N
+        solar:
+          anyOf:
+            - type: string
+          title: Solar
+          description: Y or N
+        solar_thermal:
+          anyOf:
+            - type: string
+          title: Solar Thermal
+          description: Y or N
+        wind_turbine:
+          anyOf:
+            - type: string
+          title: Wind Turbine
+          description: Y or N
+        mainheat:
+          anyOf:
+            - items:
+                type: string
+              type: array
+          title: Mainheat
+          description: List of main heating types
+        hot_water:
+          anyOf:
+            - items:
+                type: string
+              type: array
+          title: Hot Water
+          description: List of hot water types
+        main_fuel:
+          anyOf:
+            - items:
+                type: string
+              type: array
+          title: Main Fuel
+          description: List of main fuel types
+        property_type:
+          anyOf:
+            - type: string
+          title: Property Type
+          description: Built form value eg. Flat
+        built_form:
+          anyOf:
+            - type: string
+          title: Built Form
+          description: Built form value eg. Semi-Detached
+        tenure:
+          anyOf:
+            - type: string
+          title: Tenure
+          description: Tenure value eg. Rented (social)
+        funding_scheme:
+          anyOf:
+            - type: string
+          title: Funding Scheme
+          description: Initialism of 1 funding scheme. Eg. GBIS
+      type: object
+      title: PropertyFilter
+      description: Pydantic model for the Property Filter
+    RenewablePrice:
+      properties:
+        local_authority_id:
+          type: string
+          title: Local Authority Id
+        ashp_price:
+          anyOf:
+            - type: integer
+          title: Ashp Price
+        ashp_price_kwh:
+          anyOf:
+            - type: integer
+          title: Ashp Price Kwh
+        gwhp_price:
+          anyOf:
+            - type: integer
+          title: Gwhp Price
+        gwhp_price_kwh:
+          anyOf:
+            - type: integer
+          title: Gwhp Price Kwh
+        solar_price:
+          anyOf:
+            - type: integer
+          title: Solar Price
+        solar_price_kwh:
+          anyOf:
+            - type: integer
+          title: Solar Price Kwh
+        solar_thermal_price_kwh:
+          anyOf:
+            - type: integer
+          title: Solar Thermal Price Kwh
+        solar_thermal_price:
+          anyOf:
+            - type: integer
+          title: Solar Thermal Price
+        biomass_price:
+          anyOf:
+            - type: integer
+          title: Biomass Price
+        biomass_price_kwh:
+          anyOf:
+            - type: integer
+          title: Biomass Price Kwh
+      type: object
+      required:
+        - local_authority_id
+      title: RenewablePrice
+      description: Pydantic model for the Renewable Price
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
