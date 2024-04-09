@@ -6,7 +6,6 @@
     "light": "/logo/logo.png"
   },
   "openapi": ["/Ecofit API-dev-swagger.json"],
-  "favicon": "/favicon.ico",
   "colors": {
     "primary": "#dd5942",
     "light": "#07C983",
