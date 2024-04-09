@@ -9,6 +9,8 @@ info:
   x-logo:
     url: https://d1uyj448enz6p6.cloudfront.net/logo-padded2.png
     altText: Ecofit Logo
+security:
+  - ApiKeyAuth: []  
 paths:
   /funding/uprn:
     get:
@@ -912,3 +914,8 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
