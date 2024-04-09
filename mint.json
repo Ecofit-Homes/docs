@@ -5,7 +5,7 @@
     "dark": "/logo/logo.png",
     "light": "/logo/logo.png"
   },
-  "openapi": ["/Ecofit API-dev-swagger.json"],
+  "openapi": ["/openapi.json"],
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#dd5942",
