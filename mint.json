@@ -19,7 +19,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "harry@ecofithomes.com"
+      "url": "mailto:harry@ecofithomes.com"
     }
   ],
   "tabs": [
@@ -30,9 +30,9 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://tcmhsconsulting.mintlify.app/introduction"
+      "name": "Procode",
+      "icon": "toggle-on",
+      "url": "https://procode.technology"
     }
   ],
   "navigation": [
@@ -50,28 +50,28 @@
       ]
     },
     {
-      "group": "Property",
+      "group": "🏡 Property",
       "pages": [
         "api-reference/Property/uprn_get",
         "api-reference/Property/address_get"
       ]
     },
     {
-      "group": "Funding",
+      "group": "💰 Funding",
       "pages": [
         "api-reference/Funding/uprn_get",
         "api-reference/Funding/address_get"
       ]
     },
     {
-      "group": "Renewables",
+      "group": "☀️ Renewables",
       "pages": [
         "api-reference/Renewables/uprn_get",
         "api-reference/Renewables/address_get"
       ]
     },
     {
-      "group": "Properties",
+      "group": "🏘️ Properties",
       "pages": [
         "api-reference/Properties/properties_post"
       ]
