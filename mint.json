@@ -1,80 +1,82 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Ecofit API",
-  "logo": {
-    "dark": "/logo/logo.png",
-    "light": "/logo/logo.png"
-  },
-  "openapi": ["/openapi.yml"],
-  "favicon": "/favicon.svg",
-  "colors": {
-    "primary": "#dd5942",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:harry@ecofithomes.com"
-    }
-  ],
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Procode",
-      "icon": "toggle-on",
-      "url": "https://procode.technology"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "pricing"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "🏡 Property",
-      "pages": [
-        "api-reference/Property/uprn_get",
-        "api-reference/Property/address_get"
-      ]
-    },
-    {
-      "group": "💰 Funding",
-      "pages": [
-        "api-reference/Funding/uprn_get",
-        "api-reference/Funding/address_get"
-      ]
-    },
-    {
-      "group": "☀️ Renewables",
-      "pages": [
-        "api-reference/Renewables/uprn_get",
-        "api-reference/Renewables/address_get"
-      ]
-    },
-    {
-      "group": "🏘️ Properties",
-      "pages": [
-        "api-reference/Properties/properties_post"
-      ]
-    }
-  ]
+	"$schema": "https://mintlify.com/schema.json",
+	"name": "Ecofit API",
+	"logo": {
+		"dark": "/logo/logo.png",
+		"light": "/logo/logo.png"
+	},
+	"openapi": [
+		"/openapi.yml"
+	],
+	"favicon": "/favicon.svg",
+	"colors": {
+		"primary": "#dd5942",
+		"light": "#dd5942",
+		"dark": "#dd5942",
+		"anchors": {
+			"from": "#192b8c",
+			"to": "#192b8c"
+		}
+	},
+	"topbarLinks": [
+		{
+			"name": "Support",
+			"url": "mailto:support@ecofithomes.com"
+		}
+	],
+	"tabs": [
+		{
+			"name": "API Reference",
+			"url": "api-reference"
+		}
+	],
+	"anchors": [
+		{
+			"name": "Procode",
+			"icon": "toggle-on",
+			"url": "https://procode.technology"
+		}
+	],
+	"navigation": [
+		{
+			"group": "Get Started",
+			"pages": [
+				"introduction",
+				"pricing"
+			]
+		},
+		{
+			"group": "API Documentation",
+			"pages": [
+				"api-reference/introduction"
+			]
+		},
+		{
+			"group": "🏡 Property",
+			"pages": [
+				"api-reference/Property/uprn_get",
+				"api-reference/Property/address_get"
+			]
+		},
+		{
+			"group": "💰 Funding",
+			"pages": [
+				"api-reference/Funding/uprn_get",
+				"api-reference/Funding/address_get"
+			]
+		},
+		{
+			"group": "☀️ Renewables",
+			"pages": [
+				"api-reference/Renewables/uprn_get",
+				"api-reference/Renewables/address_get"
+			]
+		},
+		{
+			"group": "🏘️ Properties",
+			"pages": [
+				"api-reference/Properties/properties_post"
+			]
+		}
+	]
 }
