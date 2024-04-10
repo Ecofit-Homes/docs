@@ -10,9 +10,9 @@
 	],
 	"favicon": "/favicon.svg",
 	"colors": {
-		"primary": "#dd5942",
-		"light": "#dd5942",
-		"dark": "#dd5942",
+		"primary": "#122c91",
+		"light": "#81e9e6",
+		"dark": "#81e9e6",
 		"anchors": {
 			"from": "#192b8c",
 			"to": "#192b8c"
