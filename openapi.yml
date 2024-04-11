@@ -96,10 +96,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /property/uprn:
+  /fabric/uprn:
     get:
       tags:
-        - Property
+        - Fabric
       summary: Energy Efficiency Information for a Property by UPRN
       description: Endpoint to return energy efficiency information for a property.The endpoint takes a UPRN as a parameter.
       operationId: get_property_by_uprn_property_uprn_get
@@ -127,10 +127,10 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
         '500':
           description: Internal Server Error. Contact Admin.
-  /property/address:
+  /fabric/address:
     get:
       tags:
-        - Property
+        - Fabric
       summary: Energy Efficiency Information for a Property by Address
       description: 'Endpoint to return energy efficiency information for a property.The endpoint takes two parameters: address and postcode.'
       operationId: get_property_by_address_property_address_get
@@ -164,10 +164,10 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
         '500':
           description: Internal Server Error. Contact Admin.
-  /estimate_property:
+  /fabric/estimate_property:
     get:
       tags:
-        - Property
+        - Fabric
       summary: Estimated Energy Efficiency Information for a Property
       description: 'Endpoint to estimate what the EPC of a property may be.The endpoint takes two parameters: first line of address and postcode. Only properties with 5 nearby properties in the same postcode are estimated.'
       operationId: estimate_property_estimate_property_get

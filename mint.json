@@ -52,10 +52,12 @@
 			]
 		},
 		{
-			"group": "🏡 Property",
+			"group": "🏡 Fabric",
 			"pages": [
-				"api-reference/Property/uprn_get",
-				"api-reference/Property/address_get"
+				"api-reference/Fabric/uprn_get",
+				"api-reference/Fabric/address_get",
+				"api-reference/Fabric/estimate_property"
+
 			]
 		},
 		{
