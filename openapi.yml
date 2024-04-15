@@ -781,24 +781,24 @@ components:
           description: List of current energy ratings to filter on. Can be none, 1 or many
         mains_gas_flag:
           anyOf:
-            - type: string
+            - type: boolean
           title: Mains Gas Flag
-          description: Y or N
+          description: True or False
         solar:
           anyOf:
-            - type: string
+            - type: boolean
           title: Solar
-          description: Y or N
+          description: True or False
         solar_thermal:
           anyOf:
-            - type: string
+            - type: boolean
           title: Solar Thermal
-          description: Y or N
+          description: True or False
         wind_turbine:
           anyOf:
-            - type: string
+            - type: boolean
           title: Wind Turbine
-          description: Y or N
+          description: True or False
         mainheat:
           anyOf:
             - items:
