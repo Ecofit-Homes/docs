@@ -54,8 +54,7 @@
 		{
 			"group": "🏡 Fabric",
 			"pages": [
-				"api-reference/Fabric/uprn_get",
-				"api-reference/Fabric/address_get",
+				"api-reference/Fabric/fabric_get",
 				"api-reference/Fabric/estimate_property"
 
 			]
@@ -63,15 +62,13 @@
 		{
 			"group": "💰 Funding",
 			"pages": [
-				"api-reference/Funding/uprn_get",
-				"api-reference/Funding/address_get"
+				"api-reference/Funding/funding_get"
 			]
 		},
 		{
 			"group": "☀️ Renewables",
 			"pages": [
-				"api-reference/Renewables/uprn_get",
-				"api-reference/Renewables/address_get"
+				"api-reference/Renewables/renewables_get"
 			]
 		},
 		{
