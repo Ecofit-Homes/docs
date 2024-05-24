@@ -790,7 +790,7 @@ components:
             - type: string
             
           title: Local Authority
-          description: Local Authority ID to filter on
+          description: Local Authority name to filter on
         current_energy_rating:
           anyOf:
             - items:
