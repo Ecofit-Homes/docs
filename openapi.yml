@@ -209,10 +209,18 @@ paths:
       summary: Energy Efficiency Information for a collection of properties
       description: |-
         Endpoint to return a list of properties based on the query parameters.
-            The limit here is set to 100 but can be controlled through the limit parameter.
       operationId: get_properties_properties_post
       parameters:
-        - name: limit
+        - name: page
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: integer
+              
+            default: 1
+            title: Page
+        - name: page_size
           in: query
           required: false
           schema:
@@ -220,7 +228,7 @@ paths:
               - type: integer
               
             default: 100
-            title: Limit
+            title: Page Size
       requestBody:
         required: true
         content:
@@ -235,7 +243,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PropertyBase'
+                  $ref: '#/components/schemas/PropertiesResponse'
                 title: Response Get Properties Properties Post
         '400':
           description: Invalid filter
@@ -771,6 +779,41 @@ components:
         - solar_thermal
       title: PropertyBase
       description: PropertyBase Pydantic Model
+    PropertiesResponse:
+      properties:
+        uprn:
+          anyOf:
+            - type: string
+        address1:
+          anyOf:
+            - type: string
+        address2:
+          anyOf:
+            - type: string
+        postcode:
+          anyOf:
+            - type: string
+        local_authority:
+          anyOf:
+            - type: string
+        region:
+          anyOf:
+            - type: string
+        nation:
+          anyOf:
+            - type: string
+        property_type:
+          anyOf:
+            - type: string
+        built_form:
+          anyOf:
+            - type: string
+        current_energy_rating:
+          anyOf:
+            - type: string
+        potential_energy_rating:
+          anyOf:
+            - type: string
     PropertyFilter:
       properties:
         region:
