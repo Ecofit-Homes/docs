@@ -220,7 +220,7 @@ paths:
               
             default: 1
             title: Page
-        - name: page_size
+        - name: limit
           in: query
           required: false
           schema:
@@ -228,7 +228,7 @@ paths:
               - type: integer
               
             default: 100
-            title: Page Size
+            title: Limit
       requestBody:
         required: true
         content:
