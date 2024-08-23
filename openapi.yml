@@ -816,18 +816,12 @@ components:
             - type: string
     PropertyFilter:
       properties:
-        region:
+        postcode:
           anyOf:
             - type: string
-            
-          title: Region
-          description: Region to filter on
-        nation:
-          anyOf:
-            - type: string
-            
-          title: Nation
-          description: Nation to filter on
+
+          title: Postcode
+          description: Postcode prefix to filter on
         local_authority:
           anyOf:
             - type: string
