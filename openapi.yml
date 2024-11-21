@@ -116,43 +116,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
         '500':
           description: Internal Server Error. Contact Admin.
-  /fabric/estimate_property:
-    get:
-      tags:
-        - Property
-      summary: Estimated Energy Efficiency Information for a Property
-      description: 'Endpoint to estimate what the EPC of a property may be.The endpoint takes two parameters: first line of address and postcode. Only properties with 5 nearby properties in the same postcode are estimated.'
-      operationId: estimate_property_fabric_estimate_property_get
-      parameters:
-        - name: address
-          in: query
-          required: true
-          schema:
-            type: string
-            title: Address
-        - name: postcode
-          in: query
-          required: true
-          schema:
-            type: string
-            title: Postcode
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EstimatedPropertyBase'
-        '404':
-          description: Not enough data to estimate property
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-        '500':
-          description: Internal Server Error. Contact Admin.
   /renewables:
     get:
       tags:
