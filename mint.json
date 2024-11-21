@@ -54,9 +54,7 @@
 		{
 			"group": "🏡 Fabric",
 			"pages": [
-				"api-reference/Fabric/fabric_get",
-				"api-reference/Fabric/estimate_property"
-
+				"api-reference/Fabric/fabric_get"
 			]
 		},
 		{
